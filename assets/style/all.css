@@ -166,7 +166,8 @@ h1 {
     border-bottom: 1px solid #EFEFEF;
     padding: 17px 0px;
     width: 100%;
-    display: block; }
+    display: block;
+    color: #333333; }
     .card-content .card-check .checkbox-check::before {
       position: absolute;
       content: '';
