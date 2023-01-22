@@ -1,16 +1,32 @@
+//漸層背景
+.list {
+    background-image: linear-gradient(174deg,
+            #FFD370 46%,
+            #ffffff 46%,
+            #ffffff 100%,
+        );
+}
+
 h1 {
     text-align: center;
     font-size: 48px;
+    font-family: 'Baloo 2', cursive;
+    padding-top: 48px;
+    padding-bottom: 26px;
 }
 
 .card-input {
     position: relative;
 
+
     input {
         width: 100%;
+        padding-left: 24px; //placeholder文字往右
         border-radius: 10px;
+        border: 0; //隱藏input邊框,但點下去還是有邊框
+        outline: none; //點擊時外框就不會再出現
         height: 48px;
-
+        cursor: pointer;
     }
 
     .button-add {
@@ -32,9 +48,13 @@ h1 {
 }
 
 .card-content {
+    background-color: white;
+    margin-top: 8px;
+    border-radius: 10px;
+
     .card-list {
         display: flex;
-
+        font-size: 14px;
 
         li {
             border-bottom: 0.5px solid transparent;
@@ -72,14 +92,21 @@ h1 {
 
     .card-check {
 
-        .checkbox-content {
-            position: relative;
-            margin-left: 24px;
+        li {
+            padding: 19px 0px;
+            position: relative; //讓a標籤標齊
             //outline: 1px solid red;
         }
 
-        .checkbox-check {
+        .checkbox-content {
+            position: relative;
+            margin-left: 24px;
+            outline: 1px solid red;
 
+        }
+
+        .checkbox-check {
+            outline: 1px solid red;
             padding-left: 16px;
 
             //黃色勾勾
@@ -104,42 +131,87 @@ h1 {
                 opacity: 0;
 
             }
+
             //方框
-            &::after{
+            &::after {
                 //定位    
                 position: absolute;
-                left:0%;
-                top:0%;
+                left: 0%;
+                top: 0%;
                 //偽元素顯示
                 content: '';
                 display: block;
                 //邊框
-                border: 1px solid #9F9A91;
+                border: 1px solid #333333;
                 border-radius: 5px;
                 //大小
                 width: 20px;
                 height: 20px;
-               // outline: 1px solid red;
                 opacity: 1;
-               
+
             }
 
         }
 
         //預設checkbox樣式變透明
-        input{
+        input {
             opacity: 0;
-            &:checked{
-                ~ span::after{
+
+            &:checked {
+                ~span::after {
                     opacity: 0;
                 }
-            &:checked{
-                ~span::before{
+            }
+
+            &:checked {
+                ~span::before {
                     opacity: 1;
                 }
             }
+
+            &:checked {
+                ~span {
+                    color: gray;
+                    text-decoration: line-through;
+                }
             }
         }
-      
+
+        //close
+        .delete {
+            position: absolute;
+            background-image: url(/assets/images/close_black_18dp.svg);
+            width: 18px;
+            height: 18px;
+            outline: 1px solid red;
+            //萬用置中
+            top: 50%;
+            right: 0%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+
+
+
+        }
+
+        //設定偽元素擴大hover範圍，直接將hover設定在li上，就不用再用偽元素擴大hover範圍
+        li:hover .delete {
+            opacity: 1;
+        }
+
+    }
+}
+
+.list-footer {
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+
+    .delete-list {
+        color: gray;
+
+        &:hover {
+            color: #333333;
+        }
     }
 }
