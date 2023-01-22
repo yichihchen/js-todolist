@@ -17,7 +17,8 @@ h1 {
 
 .card-input {
     position: relative;
-
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
 
     input {
         width: 100%;
@@ -51,6 +52,9 @@ h1 {
     background-color: white;
     margin-top: 8px;
     border-radius: 10px;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+    margin-bottom: 92px;
+
 
     .card-list {
         display: flex;
@@ -93,21 +97,25 @@ h1 {
     .card-check {
 
         li {
-            padding: 19px 0px;
-            position: relative; //讓a標籤標齊
-            //outline: 1px solid red;
+            display: flex;
+            align-items: center;
         }
 
+        //label範圍
         .checkbox-content {
-            position: relative;
+            position: relative; //勾勾和框框對齊基準
             margin-left: 24px;
-            outline: 1px solid red;
-
+            display: flex;
+            width: 100%;
         }
 
+        //span
         .checkbox-check {
-            outline: 1px solid red;
-            padding-left: 16px;
+            margin-left: 16px;
+            border-bottom: 1px solid #EFEFEF;
+            padding: 17px 0px;
+            width: 100%;
+            display: block;
 
             //黃色勾勾
             &::before {
@@ -123,10 +131,10 @@ h1 {
                 height: 15px;
                 width: 10px;
                 //調整勾勾位置
-                left: 5%;
+                left: 1%;
                 top: 50%;
                 //運用transform將勾勾置中在checkbox內，請下在同一行，否則後面會覆蓋前面
-                transform: translate(-50%, -50%) rotate(45deg);
+                transform: translate(0%, -50%) rotate(45deg);
                 //outline: 1px solid red;
                 opacity: 0;
 
@@ -137,7 +145,8 @@ h1 {
                 //定位    
                 position: absolute;
                 left: 0%;
-                top: 0%;
+                top: 50%;
+                transform: translate(0%, -50%);
                 //偽元素顯示
                 content: '';
                 display: block;
@@ -179,19 +188,14 @@ h1 {
 
         //close
         .delete {
-            position: absolute;
             background-image: url(/assets/images/close_black_18dp.svg);
+            background-repeat: no-repeat;
             width: 18px;
             height: 18px;
-            outline: 1px solid red;
             //萬用置中
-            top: 50%;
-            right: 0%;
-            transform: translate(-50%, -50%);
             opacity: 0;
-
-
-
+            display: block;
+            margin: 0px 16px;
         }
 
         //設定偽元素擴大hover範圍，直接將hover設定在li上，就不用再用偽元素擴大hover範圍
