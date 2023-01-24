@@ -8,7 +8,7 @@ current: index
   <div class="container">
     <h1>TODO LIST</h1>
     <div class="card-input">
-      <input type="text" placeholder="請輸入待辦事項">
+      <input type="text" placeholder="請輸入待辦事項" class="txt">
       <a href="#" class="button-add">+</a>
     </div>
     <div class="card-content">
@@ -20,28 +20,28 @@ current: index
 
       <ul class="card-check">
         <!-- 參考W3C格式 -->
-        <li><label class="checkbox-content">
+        <li data-num="${index}"><label class="checkbox-content">
             <!-- input外多包一個span 可以下position:relative -->
             <!-- label和input放在"同一層"才能用id連動控制 -->
             <!-- span要擺在input後面,才能控制-->
             <input type="checkbox" class="checkbox"><span class="checkbox-check">把冰箱發霉的檸檬拿去丟</span>
           </label><a href="#" class="delete"></a></li>
-        <li><label class="checkbox-content">
+        <li data-num="${index}"><label class="checkbox-content">
             <input type="checkbox" class="checkbox"><span class="checkbox-check">打電話叫媽媽匯款給我</span>
           </label><a href="#" class="delete"></a></li>
-        <li><label class="checkbox-content">
+        <li data-num="${index}"><label class="checkbox-content">
             <input type="checkbox" class="checkbox"><span class="checkbox-check">整理電腦資料夾</span>
           </label><a href="#" class="delete"></a></li>
-        <li><label class="checkbox-content">
+        <li data-num="${index}"><label class="checkbox-content">
             <input type="checkbox" class="checkbox"><span class="checkbox-check">繳電費水費瓦斯費</span>
           </label><a href="#" class="delete"></a></li>
-        <li><label class="checkbox-content">
+        <li data-num="${index}"><label class="checkbox-content">
             <input type="checkbox" class="checkbox"><span class="checkbox-check">刪訊息</span></label><a href="#"
             class="delete"></a></li>
-        <li><label class="checkbox-content">
+        <li data-num="${index}"><label class="checkbox-content">
             <input type="checkbox" class="checkbox"><span class="checkbox-check">約vicky禮拜三泡溫泉</span>
           </label><a href="#" class="delete"></a></li>
-        <li><label class="checkbox-content">
+        <li data-num="${index}"><label class="checkbox-content">
             <input type="checkbox" class="checkbox"><span class="checkbox-check">約ada禮拜四吃晚餐</span>
           </label><a href="#" class="delete"></a></li>
       </ul>
