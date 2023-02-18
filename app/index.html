@@ -13,9 +13,9 @@ current: index
     </div>
     <div class="card-content">
       <ul class="card-list">
-        <li><a href="#">全部</a></li>
-        <li><a href="#">待完成</a></li>
-        <li><a href="#">已完成</a></li>
+        <li><a href="#" class="all">全部</a></li>
+        <li><a href="#" class="incomplete">待完成</a></li>
+        <li><a href="#" class="done">已完成</a></li>
       </ul>
 
       <ul class="card-check">
@@ -24,7 +24,7 @@ current: index
             <!-- input外多包一個span 可以下position:relative -->
             <!-- label和input放在"同一層"才能用id連動控制 -->
             <!-- span要擺在input後面,才能控制-->
-            <input type="checkbox" id="checkbox" ><span class="checkbox-check">把冰箱發霉的檸檬拿去丟</span>
+            <input type="checkbox" class="checkbox" data-checked="${index}"><span class="checkbox-check">把冰箱發霉的檸檬拿去丟</span>
           </label><a href="#" class="delete" data-num="${index}"></a></li>
         <li><label class="checkbox-content">
             <input type="checkbox" id="checkbox"><span class="checkbox-check">打電話叫媽媽匯款給我</span>
@@ -46,7 +46,7 @@ current: index
           </label><a href="#" class="delete" data-num="${index}"></a></li>
       </ul>
       <ul class="list-footer">
-        <li>5 個待完成項目</li>
+        <li class="waittodo">5 個待完成項目</li>
         <li><a href="#" class="delete-list">清除已完成項目</a></li>
       </ul>
     </div>

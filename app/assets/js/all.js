@@ -5,8 +5,16 @@ const txt = document.querySelector(".txt");
 const cardCheck = document.querySelector(".card-check");
 //加總totalList及清除完成項目需要宣告
 const sumList = document.querySelector(".list-footer");
-
-
+//清除所有已辦事項
+const doneDelete = document.querySelector(".delete-list");
+//計算待完成事項
+const waittodo = document.querySelector(".waittodo");
+//全部,待完成,已完成書籤
+const all = document.querySelector(".all");
+const incomplete = document.querySelector(".incomplete");
+const done = document.querySelector(".done");
+//宣告checkbox
+const checkbox = document.querySelectorAll(".checkbox");
 
 //新增待辦--不會動==
 listInput.addEventListener("click", function (e) {
@@ -24,13 +32,13 @@ listInput.addEventListener("click", function (e) {
     data.forEach(function (item, index) {
       //原本let string = ''; 的位置，主控台一直說string is not defined
       string += `<li ><label class="checkbox-content">
-      <input type="checkbox" id="checkbox"><span class="checkbox-check"> ${item.content} </span>
-    </label> <a href="#" class="delete" data-num="${index}"></a></li>`
+      <input type="checkbox" class="checkbox" data-num="${index}" onclick="changeItemStatus(this)"><span class="checkbox-check"> ${item.content} </span>
+    </label> <a href="#" class="delete"></a></li>`
       //原本cardCheck.innerHTML = string;的位置，但一直沒辦法持續新增，只能新增第一項
     })
     // cardCheck.innerHTML = string;
     cardCheck.innerHTML = string;
-    totalList();
+    
   }
 })
 
@@ -48,43 +56,37 @@ cardCheck.addEventListener("click", function (e) {
     let string = '';
     data.forEach(function (item, index) {
       string += `<li><label class="checkbox-content">
-      <input type="checkbox" id="checkbox"><span class="checkbox-check"> ${item.content} </span>
-    </label> <a href="#" class="delete" data-num="${index}"></a> </li>`
+      <input type="checkbox" class="checkbox" data-num="${index}" onclick="changeItemStatus(this)"><span class="checkbox-check"> ${item.content} </span>
+    </label> <a href="#" class="delete"></a> </li>`
     })
     cardCheck.innerHTML = string;
-    totalList();
+    
   }
-
+ 
 })
 
 //加總功能，但要放在新增和刪除待辦才有用，單獨放沒用(?)
 //跑完後加總重新累加,故要用forEach
-function totalList() {
-  let sum = 0;
-  data.forEach(function (item, index) {
-    sum += 1;
-  })
-  let totalList = `<li>${sum} 個待完成項目</li>` + `<li><a href="#" class="delete-list">清除已完成項目</a></li>`;
-  sumList.innerHTML = totalList;
-}
 
-//delete-list刪除以打勾功能，只有清掉打勾部分
-let checkedbox = document.getElementById("checkbox").checked;
-sumList.addEventListener("click", function (e) {
-  if (e.target.getAttribute("class") !== "delete-list") {
-    return;
-  } else {
-    data.forEach(function (item, index) {
-      data.splice(checkedbox, 1);
-//刪除功能後，一定要再跑一次forEach,才能顯示在網頁上
-      let string = '';
-      data.forEach(function (item, index) {
-        string += `<li><label class="checkbox-content">
-        <input type="checkbox" id="checkbox"><span class="checkbox-check"> ${item.content} </span>
-      </label> <a href="#" class="delete" data-num="${index}"></a> </li>`
-      })
-      cardCheck.innerHTML = string;
-    })
+//try
 
-  }
-})
+
+
+
+
+
+
+
+//監聽每個 checkbox 的變化
+checkbox.forEach(checkbox => {
+  checkbox.addEventListener('change', () => {
+    let count = 0; // 計數器
+    data.forEach(checkbox => {
+      if (checkbox.checked) {
+        count++;
+      }
+    });
+    waittodo.textContent = `已勾選 ${count} 個 checkbox`;
+  });
+});
+
